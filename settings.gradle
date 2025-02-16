@@ -1,0 +1,5 @@
+rootProject.name = 'monorepo'
+include 'module-service1'
+include 'module-service2'
+include 'module-common'
+

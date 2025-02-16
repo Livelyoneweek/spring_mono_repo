@@ -1,0 +1,79 @@
+springdoc:
+  writer-with-default-pretty-printer: true
+  use-fqn: true
+  api-docs:
+    groups:
+      enabled: true
+    path: /v3/api-docs/json
+    resolve-schema-properties: true
+  cache:
+    disabled: false
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  packages-to-scan: kr.co.mhnt
+  swagger-ui:
+    enabled: true
+    path: /api-docs
+    disable-swagger-default-url: false
+    display-request-duration: true
+    tags-sorter: alpha
+    operations-sorter: alpha
+    groups-order: asc
+    doc-expansion: none
+    persist-authorization: true
+    pre-loading-enabled: true
+    syntax-highlight:
+      theme: nord # "arta", "monokai", "nord", "obsidian", "tomorrow-night"
+  model-converters:
+    pageable-converter:
+      enabled: true
+  version: v1.0.0
+#    show-login-endpoint: true
+
+
+spring:
+  application:
+    name: module-common
+  sql:
+    init:
+      mode: never
+  datasource:
+    hikari:
+      maximum-pool-size: 20
+    url: jdbc:postgresql://host:port/databasename
+    username: yourInfo
+    password: yourInfo
+    driver-class-name: org.postgresql.Driver
+  devtools:
+    livereload:
+      enabled: true
+  jackson:
+    date-format: yyyy.MM.dd
+  jpa:
+    # script 파일이 hibernate 초기화 이후 동작하게 하기 위한 옵션
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    properties:
+      hibernate:
+        default_batch_fetch_size: 200
+        jdbc:
+          batch_size: 100
+        order_insertes: true
+        order_updates: true
+        query:
+          in_clause_parameter_padding: true
+          plan_cache_max_size: 1024
+    show-sql: true
+    open-in-view: true
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    converters:
+      preferred-json-mapper: jackson
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 1GB

@@ -1,0 +1,23 @@
+spring:
+  spring:
+    application:
+      name: module-service1
+
+
+logging:
+  pattern:
+    console: "[%highlight(%-5level)] [%d{yyyy-MM-dd HH:mm:ss}] [%thread] [%X{txId}] [%logger{0}:%line] %msg%n"
+    file: "%-5level [%d{yyyy-MM-dd HH:mm:ss}] [%thread] [%X{txId}] [%logger{0}:%line] %msg%n"
+  level:
+    root: info
+    kr.co.mhnt: info
+  logback:
+    rollingpolicy:
+      max-history: 50 # 보관할 최대 로그 파일 수
+      max-file-size: 30MB # 로그 파일 최대 크기, 넘어가면 롤링
+      file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}-%i.log # 롤링 시 파일 이름
+  file:
+    name: 'logs/service1.log' # 파일 위치 + 이름
+  charset:
+    console: UTF-8
+    file: UTF-8
